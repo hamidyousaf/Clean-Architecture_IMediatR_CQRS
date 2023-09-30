@@ -1,6 +1,6 @@
 ﻿using Application.Abstractions;
 using Application.Entities;
-using TP.Upgrade.Infrastructure.DataManagers;
+using Infrastructure.Repositories.Generic;
 
 namespace Infrastructure.Repositories;
 

@@ -1,12 +1,13 @@
 ﻿using Application.Abstractions.UnitOfWork;
 using Application.CQRS.Books.Commands;
+using Application.DTOs.Responces;
 using Application.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace Application.CQRS.Books.Handlers;
 
-public sealed class UpdateBookHandler : IRequestHandler<UpdateBookCommand, bool>
+public sealed class UpdateBookHandler : IRequestHandler<UpdateBookCommand, Result<bool>>
 {
     private readonly IUnitOfWork _unitOfWork;
 
@@ -15,23 +16,23 @@ public sealed class UpdateBookHandler : IRequestHandler<UpdateBookCommand, bool>
         _unitOfWork = unitOfWork;
     }
 
-    public async Task<bool> Handle(UpdateBookCommand request, CancellationToken cancellationToken)
+    public async Task<Result<bool>> Handle(UpdateBookCommand request, CancellationToken cancellationToken)
     {
         // Get book by id.
-        var book = await _unitOfWork
-            .BookRepository
-            .Get(request.Book.Id);
+        var book = await _unitOfWork.BookRepository.GetById(request.Book.Id);
 
         if (book is null)
         {
-            return false;
+            return Result<bool>.Fail($"There is no book found with id: {request.Book.Id}");
         }
 
         book.Title = request.Book.Title;
         book.Description = request.Book.Description;
         book.Author = request.Book.Author;
 
-        await _unitOfWork.BookRepository.Change(book);
-        return true;
+        _unitOfWork.BookRepository.Change(book);
+        await _unitOfWork.SaveChangesAsync();
+
+        return Result<bool>.Success(true, "Book updated successfully"); ;
     }
 }

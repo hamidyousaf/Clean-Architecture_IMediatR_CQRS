@@ -5,7 +5,8 @@ public interface IUnitOfWork
     #region Add repositories here
     IBookRepository BookRepository { get; }
     #endregion
-    Task<bool> IsCompleted();
-    bool HasChanges();
 
+    Task<bool> IsCompleted();
+    Task SaveChangesAsync();
+    bool HasChanges();
 }

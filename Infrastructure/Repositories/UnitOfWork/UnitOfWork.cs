@@ -22,4 +22,9 @@ internal class UnitOfWork : IUnitOfWork
     {
         return await _dbContext.SaveChangesAsync() > 0;
     }
+
+    public async Task SaveChangesAsync()
+    {
+        await _dbContext.SaveChangesAsync();
+    }
 }

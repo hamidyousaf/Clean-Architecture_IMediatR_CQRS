@@ -4,7 +4,6 @@ using Application.DTOs.Requests;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.RateLimiting;
 
 namespace Web.Controllers
 {
@@ -21,18 +20,27 @@ namespace Web.Controllers
         public async Task<IActionResult> GetAllBooks()
         {
             var result = await _mediator.Send(new GetAllBooksQuery());
-            
-            return Ok(result);
+
+            if (result.Succeeded)
+            {
+                return Ok(result);
+            }
+
+            return BadRequest(result);
         }
 
         [AllowAnonymous]
-        [EnableRateLimiting("fixedPolicy")]
         [HttpGet("GetBookById/{bookId}")]
         public async Task<IActionResult> GetBookById(int bookId)
         {
             var result = await _mediator.Send(new GetBookByIdQuery(bookId));
-            
-            return Ok(result);
+
+            if (result.Succeeded)
+            {
+                return Ok(result);
+            }
+
+            return BadRequest(result);
         }
 
         [AllowAnonymous]
@@ -41,7 +49,12 @@ namespace Web.Controllers
         {
             var result = await _mediator.Send(new AddBookCommand(request));
 
-            return Ok(result);
+            if (result.Succeeded)
+            {
+                return Ok(result);
+            }
+
+            return BadRequest(result);
         }
 
         [AllowAnonymous]
@@ -50,7 +63,12 @@ namespace Web.Controllers
         {
             var result = await _mediator.Send(new UpdateBookCommand(request));
 
-            return Ok(result);
+            if (result.Succeeded)
+            {
+                return Ok(result);
+            }
+
+            return BadRequest(result);
         }
 
         [AllowAnonymous]
@@ -59,7 +77,12 @@ namespace Web.Controllers
         {
             var result = await _mediator.Send(new DeleteBookCommand(bookId));
 
-            return Ok(result);
+            if (result.Succeeded)
+            {
+                return Ok(result);
+            }
+
+            return BadRequest(result);
         }
     }
 }

@@ -1,20 +1,23 @@
-﻿namespace Application.Abstractions.GenericRepository
+﻿using System.Linq.Expressions;
+
+namespace Application.Abstractions.GenericRepository
 {
     public interface IGenericRepository<TEntity> where TEntity : class
     {
+        IQueryable<TEntity> GetWithCondition(Expression<Func<TEntity, bool>> expression);
+        IQueryable<TEntity> GetWithConditionReadOnly(Expression<Func<TEntity, bool>> expression);
         IQueryable<TEntity> GetAll();
-        IQueryable<TEntity> GetReadOnlyList();
+        IQueryable<TEntity> GetAllReadOnly();
+        Task<TEntity> GetById<T>(T id);
+        Task Add(TEntity entity);
+        void Change(TEntity entity);
+        Task DeleteById<T>(T id);
+        void DeleteByEntity<T>(TEntity entity);
+        Task DeleteRange<T>(List<T> ids);
+        Task SoftDeleteById<T>(T id);
         IQueryable<TEntity> GetNotDeleted();
-        Task<TEntity> Get<T>(T id);
-        Task<int> Add(TEntity entity, bool isSaveChanges = true);
-        Task Change(TEntity entity, bool isSaveChanges = true);
-        Task ChangeRange(List<TEntity> entity, bool isSaveChanges = true);
-        Task SeederChangeRange(List<TEntity> entity, bool isSaveChanges = true);
-        Task Delete<T>(T id, bool isSaveChanges = true);
-        Task DeleteRange<T>(List<T> ids, bool isSaveChanges = true);
-        Task RemoveRangeAsync(List<TEntity> entities, bool isSaveChanges = true);
-        Task AddRangeAsync(List<TEntity> entities, bool isSaveChanges = true);
-        Task<int> Save();
-        Task SeederAddRangeAsync(List<TEntity> entities, bool isSaveChanges = true);
+        void ChangeRange(List<TEntity> entity);
+        void RemoveRange(List<TEntity> entities);
+        Task AddRangeAsync(List<TEntity> entities);
     }
 }

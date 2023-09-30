@@ -1,12 +1,13 @@
 ﻿using Application.Abstractions.UnitOfWork;
 using Application.CQRS.Books.Commands;
 using Application.CQRS.Books.Queries;
+using Application.DTOs.Responces;
 using Application.Entities;
 using MediatR;
 
 namespace Application.CQRS.Books.Handlers;
 
-public sealed class AddBookHandler : IRequestHandler<AddBookCommand, int>
+public sealed class AddBookHandler : IRequestHandler<AddBookCommand, Result<int>>
 {
     private readonly IUnitOfWork _unitOfWork;
 
@@ -15,7 +16,7 @@ public sealed class AddBookHandler : IRequestHandler<AddBookCommand, int>
         _unitOfWork = unitOfWork;
     }
 
-    public async Task<int> Handle(AddBookCommand request, CancellationToken cancellationToken)
+    public async Task<Result<int>> Handle(AddBookCommand request, CancellationToken cancellationToken)
     {
         var book = new Book()
         {
@@ -24,8 +25,8 @@ public sealed class AddBookHandler : IRequestHandler<AddBookCommand, int>
             Description = request.Book.Description
         };
         await _unitOfWork.BookRepository.Add(book);
-        await _unitOfWork.IsCompleted();
-    
-        return book.Id;
+        await _unitOfWork.SaveChangesAsync();
+
+        return Result<int>.Success(book.Id, "Book saved successfully");
     }
 }

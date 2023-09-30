@@ -3,6 +3,7 @@ using Application.Abstractions.GenericRepository;
 using Application.Abstractions.UnitOfWork;
 using Application.Entities;
 using Infrastructure.DatabaseInitializers;
+using Infrastructure.Repositories.Generic;
 using Infrastructure.Repositories.UnitOfWork;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -11,7 +12,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using TP.Upgrade.Infrastructure.DataManagers;
 
 namespace Infrastructure;
 

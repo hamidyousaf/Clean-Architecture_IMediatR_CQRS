@@ -1,0 +1,7 @@
+30-Sep-2023
+	1)- Clean up Repository class.
+	2)- Implement Result<> responce in all API.
+
+	Pending Tasks.
+	1)- Authentication work.
+	2)- Add validation in command.

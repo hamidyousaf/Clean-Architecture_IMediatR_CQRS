@@ -1,12 +1,14 @@
 ﻿using Application.Abstractions.UnitOfWork;
 using Application.CQRS.Books.Queries;
-using Application.Entities;
+using Application.DTOs.ProjectToDTOs;
+using Application.DTOs.Responces;
+using Application.Extensions.ProjectTo;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace Application.CQRS.Books.Handlers;
 
-public sealed class GetAllBooksHandler : IRequestHandler<GetAllBooksQuery, List<Book>>
+public sealed class GetAllBooksHandler : IRequestHandler<GetAllBooksQuery, Result<List<BookProjectTo_V1>>>
 {
     private readonly IUnitOfWork _unitOfWork;
 
@@ -14,11 +16,13 @@ public sealed class GetAllBooksHandler : IRequestHandler<GetAllBooksQuery, List<
     {
         _unitOfWork = unitOfWork;
     }
-    async Task<List<Book>> IRequestHandler<GetAllBooksQuery, List<Book>>.Handle(GetAllBooksQuery request, CancellationToken cancellationToken)
+    async Task<Result<List<BookProjectTo_V1>>> IRequestHandler<GetAllBooksQuery, Result<List<BookProjectTo_V1>>>.Handle(GetAllBooksQuery request, CancellationToken cancellationToken)
     {
         var result = await _unitOfWork.BookRepository
-            .GetAll()
+            .GetAllReadOnly()
+            .ProjectTo_V1()
             .ToListAsync(cancellationToken);
-        return result;
+
+        return Result<List<BookProjectTo_V1>>.Success(result);
     }
 }
