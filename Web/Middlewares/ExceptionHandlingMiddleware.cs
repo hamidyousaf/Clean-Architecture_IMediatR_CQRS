@@ -1,4 +1,4 @@
-﻿using Application.DTOs.Responces;
+﻿using Domain.DTOs.Responces;
 using System.Net;
 using System.Text.Json;
 

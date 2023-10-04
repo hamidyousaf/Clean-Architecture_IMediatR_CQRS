@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Application.Common
+namespace Domain.Common
 {
     public class BaseEntity<TId>
     {

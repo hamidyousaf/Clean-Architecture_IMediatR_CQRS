@@ -1,6 +1,6 @@
-﻿using Application.CQRS.Books.Commands;
-using Application.CQRS.Books.Queries;
-using Application.DTOs.Requests;
+﻿using Domain.CQRS.Books.Commands;
+using Domain.CQRS.Books.Queries;
+using Domain.DTOs.Requests;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -9,11 +9,7 @@ namespace Web.Controllers
 {
     public class BookController : ApiBaseController
     {
-        private readonly IMediator _mediator;
-        public BookController(IMediator mediator)
-        {
-            _mediator = mediator;
-        }
+        public BookController(IMediator mediator) : base(mediator){}
 
         [AllowAnonymous]
         [HttpGet("GetAllBooks")]

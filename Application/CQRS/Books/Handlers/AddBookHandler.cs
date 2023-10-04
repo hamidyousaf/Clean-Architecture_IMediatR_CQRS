@@ -1,11 +1,11 @@
-﻿using Application.Abstractions.UnitOfWork;
-using Application.CQRS.Books.Commands;
-using Application.CQRS.Books.Queries;
-using Application.DTOs.Responces;
-using Application.Entities;
+﻿using Domain.Abstractions.UnitOfWork;
+using Domain.CQRS.Books.Commands;
+using Domain.CQRS.Books.Queries;
+using Domain.DTOs.Responces;
+using Domain.Entities;
 using MediatR;
 
-namespace Application.CQRS.Books.Handlers;
+namespace Domain.CQRS.Books.Handlers;
 
 public sealed class AddBookHandler : IRequestHandler<AddBookCommand, Result<int>>
 {

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Application.DTOs.Requests;
+namespace Domain.DTOs.Requests;
 
 public class AddBookRequest
 {

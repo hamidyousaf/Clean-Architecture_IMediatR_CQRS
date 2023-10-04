@@ -1,7 +1,7 @@
-﻿using Application.Abstractions.GenericRepository;
-using Application.Entities;
+﻿using Domain.Abstractions.GenericRepository;
+using Domain.Entities;
 
-namespace Application.Abstractions;
+namespace Domain.Abstractions;
 
 public interface IBookRepository : IGenericRepository<Book>
 {

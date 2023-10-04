@@ -1,7 +1,7 @@
-﻿using Application;
-using Application.Abstractions.GenericRepository;
-using Application.Abstractions.UnitOfWork;
-using Application.Entities;
+﻿using Domain;
+using Domain.Abstractions.GenericRepository;
+using Domain.Abstractions.UnitOfWork;
+using Domain.Entities;
 using Infrastructure.DatabaseInitializers;
 using Infrastructure.Repositories.Generic;
 using Infrastructure.Repositories.UnitOfWork;

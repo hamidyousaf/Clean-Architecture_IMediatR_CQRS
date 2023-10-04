@@ -1,12 +1,12 @@
-﻿using Application.Abstractions.UnitOfWork;
-using Application.CQRS.Books.Queries;
-using Application.DTOs.ProjectToDTOs;
-using Application.DTOs.Responces;
-using Application.Extensions.ProjectTo;
+﻿using Domain.Abstractions.UnitOfWork;
+using Domain.CQRS.Books.Queries;
+using Domain.DTOs.ProjectToDTOs;
+using Domain.DTOs.Responces;
+using Domain.Extensions.ProjectTo;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace Application.CQRS.Books.Handlers;
+namespace Domain.CQRS.Books.Handlers;
 
 public sealed class GetAllBooksHandler : IRequestHandler<GetAllBooksQuery, Result<List<BookProjectTo_V1>>>
 {

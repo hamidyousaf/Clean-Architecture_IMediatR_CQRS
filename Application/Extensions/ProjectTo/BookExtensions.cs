@@ -1,7 +1,7 @@
-﻿using Application.DTOs.ProjectToDTOs;
-using Application.Entities;
+﻿using Domain.DTOs.ProjectToDTOs;
+using Domain.Entities;
 
-namespace Application.Extensions.ProjectTo;
+namespace Domain.Extensions.ProjectTo;
 
 internal static class BookExtensions
 {

@@ -1,4 +1,4 @@
-﻿namespace Application.DTOs.Responces;
+﻿namespace Domain.DTOs.Responces;
 
 public class Result<T>
 {
@@ -18,8 +18,8 @@ public class Result<T>
         return new Result<T>(true, message, data);
     }
 
-    public static Result<T> Fail(string message)
+    public static Result<T> Fail(string message, T data = default)
     {
-        return new Result<T>(false, message, default);
+        return new Result<T>(false, message, data);
     }
 }

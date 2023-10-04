@@ -1,8 +1,8 @@
-﻿using Application.DTOs.ProjectToDTOs;
-using Application.DTOs.Responces;
+﻿using Domain.DTOs.ProjectToDTOs;
+using Domain.DTOs.Responces;
 using MediatR;
 
-namespace Application.CQRS.Books.Queries;
+namespace Domain.CQRS.Books.Queries;
 public sealed class GetBookByIdQuery : IRequest<Result<BookProjectTo_V1>>
 {
     public int BookId { get; }

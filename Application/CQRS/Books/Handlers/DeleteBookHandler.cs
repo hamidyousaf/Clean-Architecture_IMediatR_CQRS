@@ -1,10 +1,10 @@
-﻿using Application.Abstractions.UnitOfWork;
-using Application.CQRS.Books.Commands;
-using Application.DTOs.ProjectToDTOs;
-using Application.DTOs.Responces;
+﻿using Domain.Abstractions.UnitOfWork;
+using Domain.CQRS.Books.Commands;
+using Domain.DTOs.ProjectToDTOs;
+using Domain.DTOs.Responces;
 using MediatR;
 
-namespace Application.CQRS.Books.Handlers;
+namespace Domain.CQRS.Books.Handlers;
 
 public sealed class DeleteBookHandler : IRequestHandler<DeleteBookCommand, Result<bool>>
 {

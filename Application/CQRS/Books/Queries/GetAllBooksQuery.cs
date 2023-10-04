@@ -1,9 +1,9 @@
-﻿using Application.DTOs.ProjectToDTOs;
-using Application.DTOs.Responces;
-using Application.Entities;
+﻿using Domain.DTOs.ProjectToDTOs;
+using Domain.DTOs.Responces;
+using Domain.Entities;
 using MediatR;
 
-namespace Application.CQRS.Books.Queries;
+namespace Domain.CQRS.Books.Queries;
 
 public sealed class GetAllBooksQuery : IRequest<Result<List<BookProjectTo_V1>>>
 {

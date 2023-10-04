@@ -1,7 +1,7 @@
-﻿using Application.DTOs.Responces;
+﻿using Domain.DTOs.Responces;
 using MediatR;
 
-namespace Application.CQRS.Books.Commands;
+namespace Domain.CQRS.Books.Commands;
 
 public sealed class DeleteBookCommand : IRequest<Result<bool>>
 {

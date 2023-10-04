@@ -1,4 +1,4 @@
-﻿namespace Application.DTOs.Responces;
+﻿namespace Domain.DTOs.Responces;
 
 public class ApiException
 {

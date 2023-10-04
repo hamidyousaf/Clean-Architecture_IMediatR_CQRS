@@ -1,11 +1,9 @@
-﻿using Application.Abstractions.UnitOfWork;
-using Application.CQRS.Books.Commands;
-using Application.DTOs.Responces;
-using Application.Entities;
+﻿using Domain.Abstractions.UnitOfWork;
+using Domain.CQRS.Books.Commands;
+using Domain.DTOs.Responces;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 
-namespace Application.CQRS.Books.Handlers;
+namespace Domain.CQRS.Books.Handlers;
 
 public sealed class UpdateBookHandler : IRequestHandler<UpdateBookCommand, Result<bool>>
 {
@@ -33,6 +31,6 @@ public sealed class UpdateBookHandler : IRequestHandler<UpdateBookCommand, Resul
         _unitOfWork.BookRepository.Change(book);
         await _unitOfWork.SaveChangesAsync();
 
-        return Result<bool>.Success(true, "Book updated successfully"); ;
+        return Result<bool>.Success(true, "Book updated successfully");
     }
 }

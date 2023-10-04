@@ -1,5 +1,5 @@
-﻿using Application.Abstractions;
-using Application.Entities;
+﻿using Domain.Abstractions;
+using Domain.Entities;
 using Infrastructure.Repositories.Generic;
 
 namespace Infrastructure.Repositories;

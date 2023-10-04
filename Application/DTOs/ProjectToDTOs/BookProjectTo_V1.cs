@@ -1,4 +1,4 @@
-﻿namespace Application.DTOs.ProjectToDTOs;
+﻿namespace Domain.DTOs.ProjectToDTOs;
 
 public sealed class BookProjectTo_V1
 {

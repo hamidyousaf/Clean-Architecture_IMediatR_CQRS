@@ -1,5 +1,5 @@
-﻿using Application.Abstractions;
-using Application.Abstractions.UnitOfWork;
+﻿using Domain.Abstractions;
+using Domain.Abstractions.UnitOfWork;
 
 namespace Infrastructure.Repositories.UnitOfWork;
 

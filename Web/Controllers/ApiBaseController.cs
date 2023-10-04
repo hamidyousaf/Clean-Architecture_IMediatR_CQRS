@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Web.Controllers
@@ -8,6 +9,10 @@ namespace Web.Controllers
     [Authorize]
     public class ApiBaseController : ControllerBase
     {
-       
+        protected readonly IMediator _mediator;
+        public ApiBaseController(IMediator mediator)
+        {
+            _mediator = mediator;
+        }
     }
 }

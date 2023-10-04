@@ -1,5 +1,5 @@
-﻿using Application.Entities;
-using Application.Enums;
+﻿using Domain.Entities;
+using Domain.Enums;
 using Infrastructure;
 using Infrastructure.Common.ExtensionMethods;
 using Microsoft.AspNetCore.Identity;

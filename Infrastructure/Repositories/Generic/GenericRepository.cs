@@ -1,4 +1,4 @@
-﻿using Application.Abstractions.GenericRepository;
+﻿using Domain.Abstractions.GenericRepository;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
